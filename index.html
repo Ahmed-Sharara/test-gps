@@ -119,14 +119,71 @@
     const registeredProducts = {}; // Store registered products and their status
 
     function generateRandomLocation() {
-      // Generate a random location within Egypt's approximate latitude/longitude range
-      const minLat = 29.8; // Southern Cairo
-      const maxLat = 30.2; // Northern Cairo
-      const minLng = 31.1; // Western Cairo
-      const maxLng = 31.5; // Eastern Cairo
-      
-      const latitude = (Math.random() * (maxLat - minLat) + minLat).toFixed(6);
-      const longitude = (Math.random() * (maxLng - minLng) + minLng).toFixed(6);
+        const cities = [
+     {
+       name: "Cairo",
+       minLat: 29.96,
+       maxLat: 30.05,
+       minLng: 31.20,
+       maxLng: 31.30,
+     },
+     {
+       name: "Alexandria",
+       minLat: 31.18,
+       maxLat: 31.25,
+       minLng: 29.90,
+       maxLng: 30.00,
+     },
+     {
+       name: "Giza",
+       minLat: 29.97,
+       maxLat: 30.01,
+       minLng: 31.15,
+       maxLng: 31.25,
+     },
+     {
+       name: "Luxor",
+       minLat: 25.68,
+       maxLat: 25.72,
+       minLng: 32.63,
+       maxLng: 32.65,
+     },
+     {
+      name: "Aswan",
+      minLat: 24.08,
+      maxLat: 24.12,
+      minLng: 32.87,
+      maxLng: 32.90,
+    },
+    {
+      name: "Port Said",
+      minLat: 31.25,
+      maxLat: 31.29,
+      minLng: 32.28,
+      maxLng: 32.35,
+    },
+    {
+      name: "Mansoura",
+      minLat: 31.03,
+      maxLat: 31.07,
+      minLng: 31.35,
+      maxLng: 31.40,
+    },
+    {
+      name: "Tanta",
+      minLat: 30.77,
+      maxLat: 30.80,
+      minLng: 31.00,
+      maxLng: 31.05,
+    },
+  ];
+
+  // Randomly pick a city
+      const city = cities[Math.floor(Math.random() * cities.length)];
+
+  // Generate coordinates within the selected city's bounds
+      const latitude = (Math.random() * (city.maxLat - city.minLat) + city.minLat).toFixed(6);
+      const longitude = (Math.random() * (city.maxLng - city.minLng) + city.minLng).toFixed(6);
 
       return { lat: parseFloat(latitude), lng: parseFloat(longitude) };
     }
